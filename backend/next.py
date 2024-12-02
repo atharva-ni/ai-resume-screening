@@ -24,6 +24,16 @@ def preprocess_text(text):
     """Tokenizes and cleans text."""
     return text.lower().split()
 
+def get_job_description_from_pdf(folder_path):
+    """Searches for a PDF file in the folder and extracts the job description."""
+    for file_name in os.listdir(folder_path):
+        if file_name.lower().endswith(".pdf"):
+            file_path = os.path.join(folder_path, file_name)
+            print(f"Found job description PDF: {file_name}")
+            return extract_text_from_pdf(file_path)
+    print("No PDF job description found in the folder.")
+    return ""
+
 def analyze_resumes_with_job_description(resume_folder, job_description, top_n=10):
     """Compares resumes to a job description using cosine similarity."""
     resumes = []
@@ -54,15 +64,18 @@ def analyze_resumes_with_job_description(resume_folder, job_description, top_n=1
 if __name__ == "__main__":
     # Path to folder containing resumes
     resume_folder = "E:/New folder/backend/uploads"
-    # Job description as a string (use your job description or keywords here)
-    job_description = """
-   
-     HTML/CSS, Linux , Github, NodeJS, ReactJS, NextJs , Docker, Deployement, Appwrite, MongoDB, Postgress C++, C, Python, SQL, Typescritp ,Javascript
-    """
+    # Path to the folder containing job description PDF
+    job_desc_folder = "E:/New folder/backend/jobdesc"  # Update this path as needed
 
-    # Analyze resumes and find top 10 matches based on job description
-    top_resumes = analyze_resumes_with_job_description(resume_folder, job_description, top_n=10)
+    # Get job description from the PDF file in the folder
+    job_description = get_job_description_from_pdf(job_desc_folder)
 
-    print("Top 10 Resumes:")
-    for idx, (resume, score) in enumerate(top_resumes):
-        print(f"{idx + 1}. {resume} - Similarity Score: {score:.2f}")
+    if job_description:  # Only proceed if job description is found
+        # Analyze resumes and find top 10 matches based on job description
+        top_resumes = analyze_resumes_with_job_description(resume_folder, job_description, top_n=10)
+
+        print("Top 10 Resumes:")
+        for idx, (resume, score) in enumerate(top_resumes):
+            print(f"{idx + 1}. {resume} - Similarity Score: {score:.2f}")
+    else:
+        print("Unable to proceed without a job description.")
