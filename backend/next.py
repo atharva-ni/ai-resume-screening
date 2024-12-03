@@ -3,7 +3,6 @@ import fitz  # PyMuPDF
 import pytesseract
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
-
 def extract_text_from_pdf(file_path):
     """Extracts text from a PDF."""
     text = ""

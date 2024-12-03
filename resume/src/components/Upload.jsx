@@ -47,41 +47,54 @@ const Upload = () => {
     };
 
     return (
-        <div className="text-center py-10">
-            <textarea
-                className="border border-gray-300 rounded-lg w-2/3 p-2 mb-4"
-                placeholder="Enter Job Description"
-                value={jobDescription}
-                onChange={handleJobDescriptionChange}
-                rows="4"
-            />
-            <br />
-            <input
-                type="file"
-                multiple
-                onChange={handleFileChange}
-                accept=".pdf"
-                className="block mx-auto border border-gray-300 rounded-lg p-2"
-            />
-            <button
-                onClick={handleUpload}
-                className="bg-blue-500 text-white px-4 py-2 rounded-lg mt-4 hover:bg-blue-600"
-            >
-                Upload
-            </button>
-            <br />
-            <button
-                onClick={handleRunScript}
-                className="bg-green-500 text-white px-4 py-2 rounded-lg mt-4 hover:bg-green-600"
-            >
-                Run Python Script
-            </button>
-
-            <div className="mt-4 text-gray-700">{message}</div>
-
-            <div className="mt-6">
-                <h3 className="text-2xl font-semibold mb-2">Python Script Output:</h3>
-                <pre className="bg-gray-100 p-4 rounded-lg text-left">{scriptOutput}</pre>
+        <div className="min-h-screen  flex items-center justify-center">
+            <div className="w-full max-w-2xl bg-white rounded-lg shadow-lg p-8">
+                <h1 className="text-3xl font-bold text-center text-gray-800 mb-6">
+                    Resume Analyzer
+                </h1>
+                <textarea
+                    className="w-full border border-gray-300 rounded-md p-4 mb-4 shadow focus:ring-2 focus:ring-purple-400 outline-none"
+                    placeholder="Enter Job Description"
+                    value={jobDescription}
+                    onChange={handleJobDescriptionChange}
+                    rows="5"
+                />
+                <input
+                    type="file"
+                    multiple
+                    onChange={handleFileChange}
+                    accept=".pdf"
+                    className="w-full border border-gray-300 rounded-md p-2 mb-4 shadow focus:ring-2 focus:ring-blue-400 outline-none"
+                />
+                <div className="flex gap-4">
+                    <button
+                        onClick={handleUpload}
+                        className="flex-1 bg-purple-500 text-white py-2 rounded-md font-medium hover:bg-purple-600 transition-transform transform hover:scale-105"
+                    >
+                        Upload
+                    </button>
+                    <button
+                        onClick={handleRunScript}
+                        className="flex-1 bg-blue-500 text-white py-2 rounded-md font-medium hover:bg-blue-600 transition-transform transform hover:scale-105"
+                    >
+                        Run Script
+                    </button>
+                </div>
+                {message && (
+                    <div className="mt-4 p-3 bg-green-100 text-green-800 rounded-md shadow">
+                        {message}
+                    </div>
+                )}
+                {scriptOutput && (
+                    <div className="mt-6">
+                        <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                            Python Script Output:
+                        </h3>
+                        <pre className="bg-gray-100 p-4 rounded-md shadow text-sm text-gray-700 overflow-auto whitespace-pre-wrap">
+                            {scriptOutput}
+                        </pre>
+                    </div>
+                )}
             </div>
         </div>
     );
