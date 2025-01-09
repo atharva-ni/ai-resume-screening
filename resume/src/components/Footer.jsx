@@ -1,7 +1,7 @@
 import { Github } from 'lucide-react';
 export default function Footer() {
   return (
-    <footer className="footer bg-neutral text-neutral-content items-center p-4">
+    <footer className="footer bg-base-100 text-neutral-content items-center p-4">
   <aside className="grid-flow-col items-center">
     
     <p>Copyright © {new Date().getFullYear()} - All right reserved</p>

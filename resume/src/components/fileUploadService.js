@@ -39,3 +39,4 @@ export const triggerPythonScript = async (filePaths) => {
         throw new Error("Failed to run Python script.");
     }
 };
+
