@@ -23,7 +23,7 @@ export default function About() {
     <div className="min-h-screen bg-base-100">
       {/* Hero Section */}
       <motion.section 
-        className="h-screen flex flex-col items-center justify-center text-center px-4"
+        className="h-screen flex flex-col items-center justify-center text-center px-5"
         initial="hidden"
         animate="visible"
         variants={fadeInUp}
