@@ -1,3 +1,4 @@
+// tailwind.config.js
 import daisyui from 'daisyui';
 
 export default {
@@ -9,7 +10,7 @@ export default {
   theme: {
     extend: {},
   },
-  plugins: [daisyui], // or require('daisyui')
+  plugins: [daisyui],
   daisyui: {
     themes: ["night", "wireframe"],
   },

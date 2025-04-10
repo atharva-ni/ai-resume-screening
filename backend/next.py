@@ -62,9 +62,9 @@ def analyze_resumes_with_job_description(resume_folder, job_description, top_n=1
 
 if __name__ == "__main__":
     # Path to folder containing resumes
-    resume_folder = "E:/New folder/backend/uploads"
+    resume_folder = "E:/ai-resume-screening/backend/uploads"
     # Path to the folder containing job description PDF
-    job_desc_folder = "E:/New folder/backend/jobdesc"  # Update this path as needed
+    job_desc_folder = "E:/ai-resume-screening/backend/jobdesc"  # Update this path as needed
 
     # Get job description from the PDF file in the folder
     job_description = get_job_description_from_pdf(job_desc_folder)
